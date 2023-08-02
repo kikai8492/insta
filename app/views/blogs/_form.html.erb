@@ -1,0 +1,26 @@
+<body class="img">
+  <%= form_with(model: @blog, url: choose_new_or_edit, local: true) do |form| %>
+    <% if @blog.errors.any? %>
+    <div class="error_messages">
+      <% @blog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </div>
+    <% end %>
+
+    <div class="blog">
+      <%= form.label :content, "投稿内容", class: "content" %>
+      <%= form.text_field :content, class: "text", placeholder: "内容を入力"%>
+    </div>
+
+    <div class="field" >
+      <%= form.label :image %>
+      <%= image_tag(@blog.image.url, size:"160x160") if @blog.image && @blog.image.url %>
+      <%= form.file_field :image %>
+      <%= form.hidden_field:image_cache  %>
+    </div>
+
+    <%= form.submit class:"btn btn-outline-primary"%>
+    <%= link_to "戻る",  blogs_path%>
+  <% end %>
+<body>

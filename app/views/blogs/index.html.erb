@@ -1,0 +1,21 @@
+<body class="index">
+  <h1 class="title">insta</h1>
+  <table class="table">
+      <tr>
+        <th>内容</th>
+        <th></th>
+      </tr>
+
+    <% @blogs.each do |blog| %>
+      <tr>
+        <td><%= blog.content %></td>
+        <td><%= link_to "詳細の確認", blog_path(blog.id)%>
+        <%= link_to "ツイートの編集", edit_blog_path(blog.id), data: {confirm: "本当に編集してもいいですか？"}%>
+        <%= link_to "ツイートを削除", blog_path(blog.id),  method: :delete,data: {confirm: "本当に削除してもいいですか？"}%>
+        <p>ユーザーネーム:<%= blog.user.name%></p></td>
+      </tr>
+    <% end %>
+
+    <%= link_to "新しく投稿する", new_blog_path %>
+  </table>
+</body>

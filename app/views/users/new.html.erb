@@ -1,0 +1,49 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%# <link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'> %>
+
+<div class="container">
+	<div class="row login_box">
+	      <div class="col-md-12 col-xs-12 login_control">
+        <div class="outter"></div>   
+          <%= form_with(model: @user, local: true) do |f| %>
+            <div class="col-md-12 col-xs-12" align="center">
+              <%= f.label :image, class:"image-circle"%>
+              <%= f.file_field :image, class:"image-circle"%>
+            </div>
+
+            <div class="control">
+              <%= f.label :name, class:"label"%>
+              <%= f.text_field :name, class: "form-control", placeholder: "Name"%>
+            </div>
+
+            <div class="control">
+              <%= f.label :email, class:"label" %>
+              <%= f.email_field :email, class: "form-control", placeholder: "Email"%>
+            </div>
+            
+            <div class="control">
+              <%= f.label :password, class:"label" %>
+              <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+            </div>
+
+            <div class="control">
+              <%= f.label :password_confirmation, class:"label" %>
+              <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password_Confirmation" %>
+            </div>
+            <div align="center">
+              <%= f.submit "Create Account!", class:"btn btn-primary"%>
+            </div>
+          <% end %>  
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<%= flash[:notice]%>
+
+<div class="text-center" >
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag @user.image.url,size:"160x160"%>
+  </p>
+
+  <h1><%= @user.name %>のページ</h1>
+
+  <p>メールアドレス: <%= @user.email %></p>
+
+  
+  
+</div>

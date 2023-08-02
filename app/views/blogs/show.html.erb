@@ -1,0 +1,11 @@
+<h1>詳細画面</h1>
+<p>内容:<%= @blog.content%></p>
+<p>
+<strong>Image</strong>
+<% if @blog.image?%>
+  <%= image_tag @blog.image.url, size:"160x160" %>
+<%else%>
+  <p>この投稿に画像はありません</p>
+<%end%>
+</p>
+<%= link_to '戻る', blogs_path%>
