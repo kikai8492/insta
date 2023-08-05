@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+  root 'blogs#index'
   resources :users, only: [:new, :create, :show, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
   resources :blogs do
