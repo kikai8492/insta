@@ -16,7 +16,7 @@ class BlogsController < ApplicationController
 
   def create
     @blog = current_user.blogs.build(blog_params)
-    user = current_user
+    user = current_user #confirmation_mailer.rbで使うために定義
     if @blog.save
       ConfirmationMailer.confirmation_email(user).deliver
       redirect_to blogs_path, notice: "投稿しました！"
