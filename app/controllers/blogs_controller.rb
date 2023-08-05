@@ -16,7 +16,9 @@ class BlogsController < ApplicationController
 
   def create
     @blog = current_user.blogs.build(blog_params)
+    user = current_user
     if @blog.save
+      ConfirmationMailer.confirmation_email(user).deliver
       redirect_to blogs_path, notice: "投稿しました！"
     else
       render :new, notice: "投稿できませんでした"

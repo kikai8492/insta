@@ -20,6 +20,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'bcrypt'
 
+gem 'rexml'
+
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'carrierwave'
@@ -38,6 +40,7 @@ group :development do
   gem 'web-console', '>= 4.1.0'
   gem 'listen', '~> 3.3'
   gem 'spring'
+  gem 'letter_opener_web'
 end
 
 group :test do
