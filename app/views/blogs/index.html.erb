@@ -9,7 +9,12 @@
 
     <% @blogs.each do |blog| %>
       <tr>
-        <td><%= blog.content %></td>
+        <td><%= blog.content %>
+          <% if blog.image.present?%>
+            <%= image_tag blog.image.url,size:"160x160" %></td>
+          <% else %>
+            <p>この投稿には画像はありません</p>
+          <% end %>
           <td>
             <% if blog.user == current_user %>
               <%= link_to "詳細の確認", blog_path(blog.id)%>

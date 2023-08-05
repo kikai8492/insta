@@ -1,10 +1,17 @@
 <h1>お気に入り一覧</h1>
 <% if @favorite_list.present?%>
     <% @favorite_list.each do | favorite |%>
-    <p>いいねした投稿:<%= link_to favorite.content, blog_path(favorite.id) %></p>
+        <tr>
+            <td>・<%= favorite.content %>
+            <% if favorite.image.present?%>
+                <%= image_tag favorite.image.url,size:"160x160" %></td>
+            <% else %>
+                <p>この投稿には画像はありません</p>
+            <% end %>
+        </tr>
     <% end %>
 <%else%>
     <p>いいねした投稿はありません</p>
 <%end%>
 
-<%= link_to "戻る", blogs_path%>
+<p><%= link_to "戻る", blogs_path%></p>
