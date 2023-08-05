@@ -1,6 +1,8 @@
 class BlogsController < ApplicationController
+  
   def index
     @blogs = Blog.all
+    @users = current_user
   end
 
   def new
@@ -27,6 +29,9 @@ class BlogsController < ApplicationController
 
   def edit
     @blog = current_user.blogs.find(params[:id])
+    if @blog.user_id != current_user.id
+      redirect_to blogs_path, notice: "他人の投稿は編集できません！"
+    end
   end
 
   def update

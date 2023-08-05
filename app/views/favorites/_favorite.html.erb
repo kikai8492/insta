@@ -1,0 +1,15 @@
+<div id="favorite" data-id="<%= blog.id %>">
+  <% if !Favorite.exists?(user:current_user, blog_id: blog.id)%>
+    <%= link_to favorites_path(blog: blog), method: :post, class: "favorite-btn favorite-post" do %>
+      <i class="far fa-thumbs-up"></i>
+        <span>いいね！</span>
+        <%= blog.favorites.length %>
+    <% end %>  
+  <% else %>
+    <%= link_to favorite_path(blog), method: :delete, class: "favorite-btn favorite-delete"  do %>
+      <i class="far fa-thumbs-up"></i> 
+      <span>取り消す</span>
+      <%= blog.favorites.length %>
+    <% end %>
+  <% end %>
+</div>

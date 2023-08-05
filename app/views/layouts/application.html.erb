@@ -11,14 +11,15 @@
   </head>
 
   <body>
-  <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
+    <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
 
     <%if logged_in?%>
       <%= link_to 'Profile', user_path(current_user.id)%>
       <%= link_to 'Logout',session_path(current_user.id),method: :delete %>
-      <%= link_to 'edit',edit_user_path(current_user.id)%>
+      <%= link_to 'profile_edit',edit_user_path(current_user.id)%>
+      <%= link_to 'favorites',favorite_path(current_user.id)%>
     <%else%>
       <%= link_to 'Signup',new_user_path%>
       <%= link_to 'Login',new_session_path%>
